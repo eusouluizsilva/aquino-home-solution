@@ -8,7 +8,7 @@ import { BUSINESS, SERVICE_AREAS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Service Areas | Lowell, Chelmsford, Billerica & More",
   description:
-    "Aquino Home Solutions serves Lowell, Chelmsford, Billerica, Tewksbury, Dracut, and 9 more communities in Greater Lowell, MA.",
+    "Aquino Home Solutions, your local general contractor, serves Lowell, Chelmsford, Billerica, Tewksbury, Dracut, and 9 more communities in Greater Lowell, MA.",
 };
 
 export default function ServiceAreasPage() {
@@ -25,9 +25,10 @@ export default function ServiceAreasPage() {
             Areas We Serve
           </h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-            Based in Lowell, MA, we provide HVAC and water heater services to
-            homeowners across Greater Lowell and the Merrimack Valley. If your
-            town isn&apos;t listed, give us a call — we may still be able to help.
+            Based in Lowell, MA, we provide general contracting services —
+            remodels, decks, painting, flooring, tile, plaster, and stairs —
+            to homeowners across Greater Lowell and the Merrimack Valley. If
+            your town isn&apos;t listed, give us a call — we may still be able to help.
           </p>
         </div>
 

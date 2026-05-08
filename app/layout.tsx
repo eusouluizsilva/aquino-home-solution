@@ -17,33 +17,35 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     template: "%s | Aquino Home Solutions",
-    default: "Aquino Home Solutions | HVAC & Water Heater Experts — Lowell, MA",
+    default: "Aquino Home Solutions | General Contractor — Lowell, MA",
   },
   description:
-    "Licensed & insured HVAC and water heater specialists serving Lowell, MA and surrounding communities. Same-day service available. Call (603) 408-4073.",
+    "Licensed & insured general contractor serving Lowell, MA. Kitchen & bath remodels, decks, stairs, painting, vinyl flooring, tile, and plaster. Call (603) 408-4073.",
   keywords: [
-    "HVAC Lowell MA",
-    "water heater installation Lowell",
-    "AC repair Lowell MA",
-    "furnace repair Lowell",
-    "HVAC contractor Lowell",
-    "water heater repair MA",
-    "emergency HVAC service",
+    "general contractor Lowell MA",
+    "kitchen remodel Lowell",
+    "bathroom remodel Lowell MA",
+    "deck builder Lowell",
+    "painting contractor Lowell MA",
+    "vinyl flooring installation",
+    "tile installer Lowell",
+    "plaster repair MA",
+    "stair builder Lowell",
     "Aquino Home Solutions",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Aquino Home Solutions",
-    title: "Aquino Home Solutions | HVAC & Water Heater Experts — Lowell, MA",
+    title: "Aquino Home Solutions | General Contractor — Lowell, MA",
     description:
-      "Licensed & insured HVAC and water heater specialists serving Lowell, MA. Same-day service. Call (603) 408-4073.",
+      "Licensed & insured general contractor serving Lowell, MA. Remodels, decks, painting, flooring, tile, plaster, stairs. Call (603) 408-4073.",
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
+  "@type": "GeneralContractor",
   name: BUSINESS.name,
   description: BUSINESS.description,
   telephone: BUSINESS.phone,

@@ -67,11 +67,12 @@ export default function WhyChooseUs() {
             Why Choose Us
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Trusted Local Team for Heating, Cooling, and Plumbing
+            Trusted Local General Contractor for Your Home
           </h2>
           <p className="mt-3 text-blue-100/80">
-            We focus on fast response times, code-compliant work, and honest
-            communication from your first call to final cleanup.
+            From kitchen and bath remodels to decks, painting, flooring, and
+            plaster — we deliver code-compliant work, clean finishes, and honest
+            communication from first call to final walkthrough.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

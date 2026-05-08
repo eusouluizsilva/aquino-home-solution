@@ -30,11 +30,11 @@ export default function HomePage() {
           <div className="relative flex min-h-[380px] flex-col justify-end">
             <div className="w-full px-6 pb-0 text-center">
               <h1 className="animate-fade-in text-2xl font-extrabold tracking-tight text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}>
-                The <span className="relative inline-block text-white">
+                Your Trusted <span className="relative inline-block text-white">
                   <span className="absolute inset-0 -skew-x-3 rounded bg-[#e23635]" aria-hidden="true" />
-                  <span className="relative">Plumbing Experts</span>
+                  <span className="relative">General Contractor</span>
                 </span>
-                <br />You&apos;ve Trusted for 15 Years
+                <br />Serving Lowell for 15+ Years
               </h1>
               <div className="mt-4">
                 <a href={`tel:${BUSINESS.phoneRaw}`} className="inline-flex items-center gap-2 rounded-xl bg-[#e23635] px-4 py-2.5 text-sm font-bold text-white shadow-lg transition-all hover:brightness-110 active:scale-[0.97]">
@@ -47,7 +47,7 @@ export default function HomePage() {
           <div className="relative bg-black/30 backdrop-blur-sm">
             <div className="grid grid-cols-3 py-6 text-center">
               {[
-                { target: 10, suffix: "+", label: "Years Experience" },
+                { target: 15, suffix: "+", label: "Years Experience" },
                 { target: 500, suffix: "+", label: "Happy Customers" },
                 { target: 100, suffix: "%", label: "Satisfaction" },
               ].map(({ target, suffix, label }) => (
@@ -65,11 +65,11 @@ export default function HomePage() {
           {/* Left: dark background + text */}
           <div className="flex w-1/2 flex-col justify-end bg-[#0a2a6e] px-12 pb-0 lg:px-16">
             <h1 className="animate-fade-in text-4xl font-extrabold tracking-tight text-white lg:text-5xl xl:text-6xl" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}>
-              The <span className="relative inline-block text-white">
+              Your Trusted <span className="relative inline-block text-white">
                 <span className="absolute inset-0 -skew-x-3 rounded bg-[#e23635]" aria-hidden="true" />
-                <span className="relative">Plumbing Experts</span>
+                <span className="relative">General Contractor</span>
               </span>
-              <br />You&apos;ve Trusted for 15 Years
+              <br />Serving Lowell for 15+ Years
             </h1>
             <div className="mt-6">
               <a href={`tel:${BUSINESS.phoneRaw}`} className="inline-flex items-center gap-3 rounded-xl bg-[#e23635] px-7 py-4 text-lg font-bold text-white shadow-lg transition-all hover:brightness-110 active:scale-[0.97]">
@@ -80,7 +80,7 @@ export default function HomePage() {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-3 border-t border-white/20 py-6 text-center">
               {[
-                { target: 10, suffix: "+", label: "Years Experience" },
+                { target: 15, suffix: "+", label: "Years Experience" },
                 { target: 500, suffix: "+", label: "Happy Customers" },
                 { target: 100, suffix: "%", label: "Satisfaction" },
               ].map(({ target, suffix, label }) => (

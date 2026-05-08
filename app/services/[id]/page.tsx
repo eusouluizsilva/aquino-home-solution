@@ -6,33 +6,13 @@ import { Phone } from "lucide-react";
 import { SERVICES, BUSINESS } from "@/lib/constants";
 
 const SERVICE_GALLERY: Record<string, string[]> = {
-  "air-conditioning": [
-    "/aquino-ac-01.jpeg",
-    "/aquino-ac-02.jpeg",
-    "/aquino-ac-03.jpeg",
-    "/aquino-ac-04.jpeg",
-    "/aquino-ac-05.jpeg",
-    "/aquino-ac-06.jpeg",
-  ],
-  furnace: [
-    "/aquino-furnace-01.jpeg",
-    "/aquino-furnace-05.jpeg",
-    "/aquino-furnace-06.jpeg",
-    "/aquino-furnace-07.jpeg",
-  ],
-  boiler: [
-    "/boiler-1-768x1024.webp",
-    "/boiler-2-768x1024.webp",
-  ],
-  plumbing: [
-    "/aquino-plumbing-001.jpeg",
-    "/aquino-plumbing-01.jpeg",
-    "/aquino-plumbing-03.jpeg",
-    "/aquino-plumbing-04.jpeg",
-  ],
-  emergency: [
-    "/aquino-working.jpeg",
-  ],
+  "kitchen-bath-remodel": [],
+  stairs: [],
+  decks: [],
+  painting: [],
+  "vinyl-flooring": [],
+  tile: [],
+  plaster: [],
 };
 
 export async function generateStaticParams() {

@@ -1,175 +1,221 @@
-import Link from "next/link";
 import GalleryCarousel from "@/components/GalleryCarousel";
 import {
-  Wind,
-  Flame,
-  Gauge,
-  Droplets,
-  Zap,
-  AlertTriangle,
+  ChefHat,
+  Footprints,
+  Hammer,
+  Paintbrush,
+  Layers,
+  LayoutGrid,
+  Building2,
   CheckCircle,
-  ShieldCheck,
   Wrench,
-  ArrowRightCircle,
+  ShieldCheck,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
-const services = [
+interface SubService {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Service {
+  id: string;
+  badge: string;
+  category: string;
+  tagline: string;
+  title: string;
+  highlight: string;
+  description: string;
+  icon: React.ReactNode;
+  gallery: GalleryImage[];
+  subServices: SubService[];
+}
+
+const services: Service[] = [
   {
-    id: "air-conditioning",
-    badge: "Heat Pump · Mini-Split · Air Conditioning",
-    category: "Installation & Maintenance",
-    tagline: "Total comfort solutions for homes & businesses",
-    title: "AC / Heat Pump",
-    highlight: "Cool air. Lower bills. Reliable performance.",
+    id: "kitchen-bath-remodel",
+    badge: "Kitchen · Bathroom · Full Renovations",
+    category: "Remodeling",
+    tagline: "Modern remodels that fit how you actually live.",
+    title: "Kitchen & Bathroom Remodel",
+    highlight: "Layout, plumbing, finishes — all under one contractor.",
     description:
-      "High-efficiency air conditioning installation and maintenance designed for long-term comfort and savings.",
-    icon: <Wind className="h-10 w-10" />,
-    gallery: [
-      { src: "/aquino-ac-01.jpeg", alt: "AC unit installation" },
-      { src: "/aquino-ac-02.jpeg", alt: "Mini-split system" },
-      { src: "/aquino-ac-03.jpeg", alt: "AC maintenance work" },
-      { src: "/aquino-ac-04.jpeg", alt: "Heat pump outdoor unit" },
-      { src: "/aquino-ac-05.jpeg", alt: "AC system setup" },
-      { src: "/aquino-ac-06.jpeg", alt: "Completed AC install" },
-    ],
+      "Full kitchen and bathroom remodels from demo to final fixtures. We coordinate plumbing, tile, cabinetry, and finishes so your project stays on schedule and on budget.",
+    icon: <ChefHat className="h-10 w-10" />,
+    gallery: [],
     subServices: [
       {
         icon: <CheckCircle className="h-5 w-5" />,
-        title: "AC Installation",
+        title: "Kitchen Remodels",
         description:
-          "Professional installation of central AC, mini-splits, and heat pumps — sized correctly for your space and budget.",
+          "Cabinets, countertops, backsplash, plumbing, and lighting — all coordinated and finished cleanly.",
       },
       {
         icon: <Wrench className="h-5 w-5" />,
-        title: "AC Maintenance & Tune-Up",
+        title: "Bathroom Remodels",
         description:
-          "Seasonal tune-ups and inspections to maximize efficiency, prevent breakdowns, and extend the life of your system.",
+          "Tile work, vanities, tubs, showers, and fixtures installed level, square, and watertight.",
       },
     ],
   },
   {
-    id: "furnace",
-    badge: "Gas · Oil · Electric",
-    category: "Installation & Maintenance",
-    tagline: "Powerful heat. Safe operation. Winter-ready.",
-    title: "Furnace",
-    highlight: "Expert furnace installation and maintenance.",
+    id: "stairs",
+    badge: "Interior · Exterior · Custom Builds",
+    category: "Carpentry",
+    tagline: "Stairs built to be used every day for decades.",
+    title: "Stairs",
+    highlight: "Custom stair builds, repairs, and refinishing.",
     description:
-      "Expert furnace installation and maintenance to keep your property warm, efficient, and protected all winter long.",
-    icon: <Flame className="h-10 w-10" />,
-    gallery: [
-      { src: "/aquino-furnace-01.jpeg", alt: "Furnace installation" },
-      { src: "/aquino-furnace-05.jpeg", alt: "Furnace system close-up" },
-      { src: "/aquino-furnace-06.jpeg", alt: "Furnace maintenance work" },
-      { src: "/aquino-furnace-07.jpeg", alt: "Completed furnace install" },
-    ],
+      "New stair construction, replacement treads and risers, railings, and refinishing. Solid framing, tight joinery, and finishes that hold up to daily use.",
+    icon: <Footprints className="h-10 w-10" />,
+    gallery: [],
     subServices: [
       {
         icon: <CheckCircle className="h-5 w-5" />,
-        title: "Professional Furnace Installation",
+        title: "New Stair Construction",
         description:
-          "Expert furnace installation services designed to deliver powerful, consistent heat while ensuring safe and efficient operation during winter.",
+          "Interior and exterior stair builds — code-compliant rise/run, solid framing, and clean finish work.",
+      },
+      {
+        icon: <Wrench className="h-5 w-5" />,
+        title: "Repairs & Refinishing",
+        description:
+          "Replace worn treads, fix squeaks, refinish railings, and bring tired staircases back to life.",
+      },
+    ],
+  },
+  {
+    id: "decks",
+    badge: "New Builds · Restoration · Railings",
+    category: "Carpentry",
+    tagline: "Decks designed for New England weather.",
+    title: "Decks",
+    highlight: "Built for the climate, finished for the long run.",
+    description:
+      "New deck construction, replacement boards, structural repairs, and railings. We use the right fasteners, flashing, and finishes for the Massachusetts climate.",
+    icon: <Hammer className="h-10 w-10" />,
+    gallery: [],
+    subServices: [
+      {
+        icon: <CheckCircle className="h-5 w-5" />,
+        title: "New Deck Construction",
+        description:
+          "Pressure-treated, composite, or hardwood decks built on properly footed structures with code-compliant railings.",
       },
       {
         icon: <ShieldCheck className="h-5 w-5" />,
-        title: "Furnace Maintenance & Safety Checks",
+        title: "Repairs & Restoration",
         description:
-          "Comprehensive maintenance and safety inspections to protect your property, improve efficiency, and extend the lifespan of your furnace system.",
+          "Board replacement, structural repairs, sanding, and refinishing to extend the life of your existing deck.",
       },
     ],
   },
   {
-    id: "boiler",
-    badge: "Residential · Commercial",
-    category: "Installation & Maintenance",
-    tagline: "Heavy-duty boiler solutions built to perform.",
-    title: "Boiler Systems",
-    highlight:
-      "High-performance boiler systems for demanding environments.",
+    id: "painting",
+    badge: "Interior · Exterior · Trim & Cabinetry",
+    category: "Finishes",
+    tagline: "Clean prep. Even coats. Sharp lines.",
+    title: "Painting",
+    highlight: "Interior and exterior painting that lasts.",
     description:
-      "High-performance boiler systems designed to deliver powerful, consistent heat for demanding residential and commercial environments.",
-    icon: <Gauge className="h-10 w-10" />,
-    gallery: [
-      { src: "/boiler-1-768x1024.webp", alt: "Boiler system installation" },
-      { src: "/boiler-2-768x1024.webp", alt: "Boiler maintenance" },
-      { src: "/aquino-plumbing-001.jpeg", alt: "Boiler plumbing work" },
-    ],
+      "Interior and exterior painting with proper surface prep, premium coatings, and clean cut-ins. We protect your floors and finishes from the first drop cloth on.",
+    icon: <Paintbrush className="h-10 w-10" />,
+    gallery: [],
     subServices: [
       {
         icon: <CheckCircle className="h-5 w-5" />,
-        title: "Boiler Installation",
+        title: "Interior Painting",
         description:
-          "Complete boiler installation services ensuring safe operation, energy efficiency, and long-term reliability.",
+          "Walls, ceilings, trim, doors, and cabinets — patching, priming, and clean two-coat finishes.",
       },
       {
-        icon: <Wrench className="h-5 w-5" />,
-        title: "Boiler Maintenance",
+        icon: <ShieldCheck className="h-5 w-5" />,
+        title: "Exterior Painting",
         description:
-          "Professional maintenance and inspections to protect your system, prevent failures, and extend boiler lifespan.",
+          "Power washing, scraping, priming, and exterior-grade paint for siding, trim, decks, and porches.",
       },
     ],
   },
   {
-    id: "plumbing",
-    badge: "Residential · Commercial",
-    category: "Installation & Repair",
-    tagline: "Reliable pipes. Clean water. Zero leaks.",
-    title: "Plumbing Installation",
-    highlight: "Full-service plumbing for new builds and upgrades.",
+    id: "vinyl-flooring",
+    badge: "Luxury Vinyl Plank · Tile · Sheet",
+    category: "Flooring",
+    tagline: "Flat, level, and built to last.",
+    title: "Vinyl Flooring",
+    highlight: "Professional vinyl installation, done right the first time.",
     description:
-      "Professional plumbing installation and repair for kitchens, bathrooms, laundry rooms, and more. Code-compliant work you can trust.",
-    icon: <Droplets className="h-10 w-10" />,
-    gallery: [
-      { src: "/aquino-plumbing-01.jpeg", alt: "Plumbing installation work" },
-      { src: "/aquino-plumbing-001.jpeg", alt: "Pipe fitting and connections" },
-      { src: "/aquino-plumbing-03.jpeg", alt: "Bathroom plumbing setup" },
-      { src: "/aquino-plumbing-04.jpeg", alt: "Plumbing fixture install" },
-      { src: "/aquino-pumbling-img01-1229x1536.webp", alt: "Professional plumbing service" },
-    ],
+      "Luxury vinyl plank, vinyl tile, and sheet vinyl installation. Subfloor leveling, proper expansion gaps, and clean transitions to other rooms.",
+    icon: <Layers className="h-10 w-10" />,
+    gallery: [],
     subServices: [
       {
         icon: <CheckCircle className="h-5 w-5" />,
-        title: "New Plumbing Installation",
+        title: "Vinyl Plank & Tile",
         description:
-          "Complete pipe installation for new construction, renovations, and fixture upgrades — done to code every time.",
+          "Click-lock and glue-down installs over level, prepped subfloors with clean baseboard reinstallation.",
       },
       {
         icon: <Wrench className="h-5 w-5" />,
-        title: "Plumbing Repairs",
+        title: "Subfloor Prep",
         description:
-          "Leaks, clogs, burst pipes, and fixture replacements diagnosed and resolved quickly to minimize disruption.",
+          "Leveling, patching, and moisture barriers so your new floor looks and performs like it should.",
       },
     ],
   },
   {
-    id: "emergency",
-    badge: "24 / 7 Availability",
-    category: "Emergency Response",
-    tagline: "No heat. No hot water. We're on the way.",
-    title: "Emergency Service",
-    highlight: "Urgent response for heating and hot water failures.",
+    id: "tile",
+    badge: "Floors · Walls · Showers · Backsplashes",
+    category: "Tile Work",
+    tagline: "Precise layouts. Crisp grout. Watertight.",
+    title: "Tile Installation",
+    highlight: "Floor, wall, and shower tile — built to last.",
     description:
-      "Urgent response when you have no heat or no hot water. We prioritize emergency calls and dispatch fast.",
-    icon: <AlertTriangle className="h-10 w-10" />,
-    gallery: [
-      { src: "/aquino-working.jpeg", alt: "Emergency HVAC repair" },
-      { src: "/aquino-furnace-02.webp", alt: "Emergency furnace repair" },
-      { src: "/aquino-plumbing-04.jpeg", alt: "Emergency plumbing work" },
-      { src: "/Tankless-water-heater-2.webp", alt: "Emergency water heater service" },
-    ],
+      "Tile installation for floors, walls, showers, and backsplashes. Properly waterproofed substrates, balanced layouts, and clean grout lines from edge to edge.",
+    icon: <LayoutGrid className="h-10 w-10" />,
+    gallery: [],
     subServices: [
       {
-        icon: <Flame className="h-5 w-5" />,
-        title: "Heating Emergencies",
+        icon: <CheckCircle className="h-5 w-5" />,
+        title: "Floor & Wall Tile",
         description:
-          "Boiler failures, furnace outages, and heat pump issues handled urgently — especially on freezing nights.",
+          "Porcelain, ceramic, stone, and mosaic tile installed level with planned, balanced layouts.",
       },
       {
-        icon: <Droplets className="h-5 w-5" />,
-        title: "Water Heater Emergencies",
+        icon: <ShieldCheck className="h-5 w-5" />,
+        title: "Shower & Wet Areas",
         description:
-          "Burst tanks, major leaks, and total outages addressed with priority scheduling and fast repairs.",
+          "Waterproofed shower pans, walls, and niches built to drain correctly and stay watertight.",
+      },
+    ],
+  },
+  {
+    id: "plaster",
+    badge: "Repairs · Skim Coats · Full Walls",
+    category: "Walls & Ceilings",
+    tagline: "Smooth walls — paint goes on without a fight.",
+    title: "Plaster",
+    highlight: "Plaster repair, skim coats, and full walls.",
+    description:
+      "Plaster repairs, full skim coats, and new plaster work. Patch holes, fix cracks, and bring old walls back to a smooth, paint-ready surface.",
+    icon: <Building2 className="h-10 w-10" />,
+    gallery: [],
+    subServices: [
+      {
+        icon: <CheckCircle className="h-5 w-5" />,
+        title: "Repairs & Patching",
+        description:
+          "Holes, cracks, water damage, and ceiling repairs blended seamlessly into the surrounding wall.",
+      },
+      {
+        icon: <Wrench className="h-5 w-5" />,
+        title: "Skim Coats & New Walls",
+        description:
+          "Full-room skim coats over old plaster or drywall, plus fresh plaster for renovations and additions.",
       },
     ],
   },
@@ -207,11 +253,17 @@ export default function ServiceSections() {
                 </span>
               </div>
 
-              <div className="mt-8 w-full">
-                <GalleryCarousel images={service.gallery} />
-              </div>
+              <p className="mt-4 max-w-2xl text-muted-foreground">
+                {service.description}
+              </p>
 
-              <div className="mt-8 grid w-full grid-cols-2 gap-4">
+              {service.gallery.length > 0 && (
+                <div className="mt-8 w-full">
+                  <GalleryCarousel images={service.gallery} />
+                </div>
+              )}
+
+              <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
                 {service.subServices.map((sub) => (
                   <div
                     key={sub.title}
@@ -229,12 +281,10 @@ export default function ServiceSections() {
                   </div>
                 ))}
               </div>
-
-           
             </div>
           </div>
-          </section>
-        ))}
-      </div>
+        </section>
+      ))}
+    </div>
   );
 }
