@@ -40,7 +40,7 @@ export default function Footer() {
               {SERVICES.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href="/services"
+                    href={`/services/${service.id}`}
                     className="text-sm hover:text-white transition-colors"
                   >
                     {service.title}
@@ -90,8 +90,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
+        <div className="mt-10 space-y-1 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
+          <div>
+            © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
+          </div>
+          <div>
+            Website by{" "}
+            <a
+              href="https://silvagrowth.com/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors"
+            >
+              SilvaGrowth
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -14,13 +14,17 @@ const inter = Inter({
   display: "swap",
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://aquinohomesolutions.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s | Aquino Home Solutions",
     default: "Aquino Home Solutions | General Contractor — Lowell, MA",
   },
   description:
-    "Licensed & insured general contractor serving Lowell, MA. Kitchen & bath remodels, decks, stairs, painting, vinyl flooring, tile, and plaster. Call (603) 408-4073.",
+    "Licensed & insured general contractor serving Lowell, MA. Kitchen & bath remodels, decks, stairs, painting, vinyl flooring, tile, plaster, plumbing, and HVAC. Call (603) 408-4073.",
   keywords: [
     "general contractor Lowell MA",
     "kitchen remodel Lowell",
@@ -31,6 +35,8 @@ export const metadata: Metadata = {
     "tile installer Lowell",
     "plaster repair MA",
     "stair builder Lowell",
+    "plumber Lowell MA",
+    "HVAC Lowell MA",
     "Aquino Home Solutions",
   ],
   openGraph: {
@@ -39,17 +45,22 @@ export const metadata: Metadata = {
     siteName: "Aquino Home Solutions",
     title: "Aquino Home Solutions | General Contractor — Lowell, MA",
     description:
-      "Licensed & insured general contractor serving Lowell, MA. Remodels, decks, painting, flooring, tile, plaster, stairs. Call (603) 408-4073.",
+      "Licensed & insured general contractor serving Lowell, MA. Remodels, decks, painting, flooring, tile, plaster, stairs, plumbing, HVAC. Call (603) 408-4073.",
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
+  "@id": `${SITE_URL}#business`,
   name: BUSINESS.name,
   description: BUSINESS.description,
+  url: SITE_URL,
+  image: `${SITE_URL}/aquino-logo.webp`,
+  logo: `${SITE_URL}/aquino-logo.webp`,
   telephone: BUSINESS.phone,
   email: BUSINESS.email,
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     addressLocality: BUSINESS.city,
@@ -79,6 +90,24 @@ const localBusinessSchema = {
       longitude: -71.3162,
     },
     geoRadius: "50000",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "General Contracting Services",
+    itemListElement: [
+      "Kitchen & Bathroom Remodel",
+      "Stairs",
+      "Decks",
+      "Painting",
+      "Vinyl Flooring",
+      "Tile Installation",
+      "Plaster",
+      "Plumbing",
+      "HVAC",
+    ].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+    })),
   },
 };
 

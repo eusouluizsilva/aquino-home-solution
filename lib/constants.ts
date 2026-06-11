@@ -9,11 +9,11 @@ export const BUSINESS = {
   zip: "01850",
   address: "Lowell, MA 01850",
   description:
-    "Licensed & insured general contractor serving Lowell, MA and surrounding communities. Remodeling, decks, painting, flooring, tile, plaster, and stairs.",
+    "Licensed & insured general contractor serving Lowell, MA and surrounding communities. Remodeling, decks, painting, flooring, tile, plaster, stairs, plumbing, and HVAC.",
   hours: {
     weekdays: "Mon–Fri: 7:00 AM – 7:00 PM",
     saturday: "Sat: 8:00 AM – 5:00 PM",
-    sunday: "Sun: Emergency calls only",
+    sunday: "Sun: Closed",
   },
 };
 
@@ -59,6 +59,18 @@ export const SERVICES = [
     title: "Plaster",
     description: "Plaster repair, skim coats, and full walls — smooth finishes ready for paint.",
     icon: "Building2",
+  },
+  {
+    id: "plumbing",
+    title: "Plumbing",
+    description: "Repairs, fixture installs, water heaters, and remodel rough-ins — done right.",
+    icon: "Droplets",
+  },
+  {
+    id: "hvac",
+    title: "HVAC",
+    description: "Heating and cooling installation, service, and repair for year-round comfort.",
+    icon: "Wind",
   },
 ];
 

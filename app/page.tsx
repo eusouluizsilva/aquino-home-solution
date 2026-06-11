@@ -39,7 +39,7 @@ export default function HomePage() {
               <div className="mt-4">
                 <a href={`tel:${BUSINESS.phoneRaw}`} className="inline-flex items-center gap-2 rounded-xl bg-[#e23635] px-4 py-2.5 text-sm font-bold text-white shadow-lg transition-all hover:brightness-110 active:scale-[0.97]">
                   <Phone className="h-4 w-4" />
-                  Emergency? Call {BUSINESS.phone}
+                  Call {BUSINESS.phone} — Free Estimate
                 </a>
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function HomePage() {
             <div className="mt-6">
               <a href={`tel:${BUSINESS.phoneRaw}`} className="inline-flex items-center gap-3 rounded-xl bg-[#e23635] px-7 py-4 text-lg font-bold text-white shadow-lg transition-all hover:brightness-110 active:scale-[0.97]">
                 <Phone className="h-5 w-5" />
-                Emergency? Call {BUSINESS.phone}
+                Call {BUSINESS.phone} — Free Estimate
               </a>
             </div>
             {/* Stats */}

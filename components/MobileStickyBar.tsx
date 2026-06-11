@@ -40,7 +40,7 @@ export default function MobileStickyBar() {
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
             <Phone className="h-4 w-4" />
           </span>
-          <span className="truncate text-sm font-semibold">Call Now 24h</span>
+          <span className="truncate text-sm font-semibold">Call Now</span>
         </a>
         <a
           href={`https://wa.me/${BUSINESS.whatsapp}`}

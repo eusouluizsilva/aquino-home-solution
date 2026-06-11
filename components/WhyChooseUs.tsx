@@ -8,7 +8,7 @@ const reasons = [
     icon: <Clock className="h-8 w-8" />,
     title: "Fast Response",
     description:
-      "We answer calls fast and offer same-day appointments. No waiting weeks for service.",
+      "We answer calls fast and reply to every estimate request within 1 business hour.",
   },
   {
     icon: <Shield className="h-8 w-8" />,

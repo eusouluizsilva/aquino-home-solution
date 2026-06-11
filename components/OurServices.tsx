@@ -7,6 +7,8 @@ import {
   Layers,
   LayoutGrid,
   Building2,
+  Droplets,
+  Wind,
 } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 
@@ -18,11 +20,13 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   Layers: <Layers className="h-7 w-7 text-[#0a2a6e]" />,
   LayoutGrid: <LayoutGrid className="h-7 w-7 text-[#0a2a6e]" />,
   Building2: <Building2 className="h-7 w-7 text-[#0a2a6e]" />,
+  Droplets: <Droplets className="h-7 w-7 text-[#0a2a6e]" />,
+  Wind: <Wind className="h-7 w-7 text-[#0a2a6e]" />,
 };
 
 export default function OurServices() {
   return (
-    <section className="relative overflow-hidden bg-gray-100 py-16 md:py-20">
+    <section id="services" className="relative overflow-hidden bg-gray-100 py-16 md:py-20">
       {/* Diagonal blue background */}
       <div
         className="pointer-events-none absolute inset-0 bg-[#0a2a6e]"
@@ -39,7 +43,7 @@ export default function OurServices() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
           {SERVICES.map((service) => (
             <div
               key={service.id}
