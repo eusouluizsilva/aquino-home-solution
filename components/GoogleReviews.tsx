@@ -51,7 +51,7 @@ export default function GoogleReviews() {
 
   return (
     <section className="border-t py-16 md:py-24 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8 mb-10">
         <div className="flex items-center justify-center gap-3 mb-3">
           <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>

@@ -3,7 +3,7 @@ export const BUSINESS = {
   phone: "(603) 408-4073",
   phoneRaw: "16034084073",
   whatsapp: "16034084073",
-  email: "info@aquinohomesolutions.com",
+  email: "aquinohomesolution@gmail.com",
   city: "Lowell",
   state: "MA",
   zip: "01850",

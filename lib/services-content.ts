@@ -15,6 +15,7 @@ export interface ServiceContent {
   trustPoints: string[];
   iconName: string;
   heroImage: string;
+  heroVideo?: string;
   gallery: { src: string; alt: string }[];
   subServices: SubServiceContent[];
   metaDescription: string;
@@ -40,6 +41,7 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     ],
     iconName: "ChefHat",
     heroImage: "/services/kitchen-bath-remodel/kitchen-bath-remodel-1.jpg",
+    heroVideo: "/services/kitchen-bath-remodel/hero.mp4",
     gallery: [
       { src: "/services/kitchen-bath-remodel/kitchen-bath-remodel-1.jpg", alt: "Modern kitchen remodel" },
       { src: "/services/kitchen-bath-remodel/kitchen-bath-remodel-2.jpg", alt: "Renovated kitchen with island" },
@@ -120,6 +122,7 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     ],
     iconName: "Hammer",
     heroImage: "/services/decks/decks-1.jpg",
+    heroVideo: "/services/decks/hero.mp4",
     gallery: [
       { src: "/services/decks/decks-1.jpg", alt: "Backyard wooden deck" },
       { src: "/services/decks/decks-2.jpg", alt: "Composite deck build" },
@@ -160,6 +163,7 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     ],
     iconName: "Paintbrush",
     heroImage: "/services/painting/painting-1.jpg",
+    heroVideo: "/services/painting/hero.mp4",
     gallery: [
       { src: "/services/painting/painting-1.jpg", alt: "Interior painting work" },
       { src: "/services/painting/painting-2.jpg", alt: "House exterior painting" },
@@ -240,6 +244,7 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     ],
     iconName: "LayoutGrid",
     heroImage: "/services/tile/tile-1.jpg",
+    heroVideo: "/services/tile/hero.mp4",
     gallery: [
       { src: "/services/tile/tile-1.jpg", alt: "Bathroom tile work" },
       { src: "/services/tile/tile-2.jpg", alt: "Shower tile installation" },

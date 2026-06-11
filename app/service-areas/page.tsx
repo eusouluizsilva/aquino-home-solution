@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ServiceAreasPage() {
   return (
     <div className="py-12 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">
           <div className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-primary">

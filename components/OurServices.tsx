@@ -33,7 +33,7 @@ export default function OurServices() {
         style={{ clipPath: "polygon(0 0, 52% 0, 26% 100%, 0 100%)" }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="mb-12">
           <p className="text-xs font-bold uppercase tracking-widest text-white/60">What we do</p>
@@ -43,7 +43,7 @@ export default function OurServices() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:gap-10">
           {SERVICES.map((service) => (
             <div
               key={service.id}

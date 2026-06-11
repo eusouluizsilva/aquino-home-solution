@@ -63,14 +63,28 @@ export default async function ServicePage({
       {/* Hero with photo */}
       <section className="relative overflow-hidden">
         <div className="relative h-[420px] md:h-[520px]">
-          <Image
-            src={service.heroImage}
-            alt={service.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          {service.heroVideo ? (
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={service.heroImage}
+              aria-hidden="true"
+            >
+              <source src={service.heroVideo} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src={service.heroImage}
+              alt={service.title}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          )}
           <div
             className="absolute inset-0"
             style={{
@@ -78,7 +92,7 @@ export default async function ServicePage({
                 "linear-gradient(135deg, rgba(10,42,110,0.85) 0%, rgba(10,42,110,0.55) 55%, rgba(0,0,0,0.55) 100%)",
             }}
           />
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 sm:px-6 lg:px-8 md:pb-14">
+          <div className="relative z-10 mx-auto flex h-full max-w-[90rem] flex-col justify-end px-4 pb-10 sm:px-6 lg:px-8 md:pb-14">
             <Link
               href="/"
               className="mb-3 inline-flex w-fit items-center text-sm font-medium text-white/80 hover:text-white"
@@ -119,7 +133,7 @@ export default async function ServicePage({
 
       {/* Description + trust points */}
       <section className="bg-white py-12 md:py-16">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-3 lg:gap-12 lg:px-8">
+        <div className="mx-auto grid max-w-[90rem] grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-3 lg:gap-12 lg:px-8">
           <div className="lg:col-span-2">
             <p className="text-sm font-bold uppercase tracking-widest text-[#e23635]">
               {service.category}
@@ -181,7 +195,7 @@ export default async function ServicePage({
       {/* Gallery */}
       {service.gallery.length > 0 && (
         <section className="bg-white py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
             <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
               Recent {service.title} Projects
             </h2>
@@ -213,7 +227,7 @@ export default async function ServicePage({
         id="estimate"
         className="overflow-x-hidden bg-[linear-gradient(180deg,rgba(238,244,255,0.85)_0%,rgba(255,255,255,1)_60%,rgba(255,240,242,0.78)_100%)] py-12 md:py-16"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <p className="text-sm font-bold uppercase tracking-widest text-[#e23635]">
@@ -288,7 +302,7 @@ export default async function ServicePage({
 
       {/* Other services */}
       <section className="bg-white py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Other Services We Offer
           </h2>

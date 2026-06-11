@@ -61,7 +61,7 @@ export default function WhyChooseUs() {
 
   return (
     <section className="py-10 md:py-14" style={{ background: "linear-gradient(135deg, oklch(0.42 0.03 250) 0%, oklch(0.50 0.025 240) 100%)" }}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
           <p className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-100">
             Why Choose Us

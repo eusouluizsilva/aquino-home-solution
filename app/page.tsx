@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CTAForm from "@/components/CTAForm";
 import GoogleReviews from "@/components/GoogleReviews";
@@ -113,8 +113,8 @@ export default function HomePage() {
         id="appointment"
         className="overflow-x-hidden bg-[linear-gradient(180deg,rgba(238,244,255,0.8)_0%,rgba(255,255,255,1)_58%,rgba(255,240,242,0.72)_100%)] py-6 md:py-10"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16 xl:gap-24">
             {/* Left: van image + text */}
             <div className="space-y-6">
             <VanImage />
@@ -153,23 +153,81 @@ export default function HomePage() {
         <GoogleReviews />
       </div>
 
-      {/* Service areas */}
-      <section className="border-t bg-[linear-gradient(180deg,rgba(240,246,255,0.88)_0%,rgba(255,255,255,1)_65%,rgba(255,240,244,0.76)_100%)] py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Areas We Serve
-            </h2>
-          </div>
-          <div className="mx-auto max-w-md overflow-hidden rounded-xl border shadow-sm">
-            <Image
-              src="/service-area-map.webp"
-              alt="Map showing Aquino Home Solutions service area — Lowell MA and surrounding communities within ~30 miles"
-              width={928}
-              height={928}
-              className="w-full h-auto"
-              priority
-            />
+      {/* Service areas + free estimate */}
+      <section
+        id="service-area"
+        className="border-t bg-[linear-gradient(180deg,rgba(240,246,255,0.88)_0%,rgba(255,255,255,1)_65%,rgba(255,240,244,0.76)_100%)] py-12 md:py-20"
+      >
+        <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16 xl:gap-24">
+            {/* Left: heading, contact channels, map */}
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Areas We Serve
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Proudly serving Lowell, MA and surrounding communities within
+                ~30 miles. If you&apos;re in the highlighted area, we&apos;ve
+                got you covered.
+              </p>
+
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <a
+                  href={`tel:${BUSINESS.phoneRaw}`}
+                  className="group flex items-center gap-4 rounded-2xl border bg-white p-5 shadow-sm transition-all hover:shadow-md"
+                >
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0a2a6e] text-white">
+                    <Phone className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      Call or Text
+                    </span>
+                    <span className="block text-base font-bold text-foreground group-hover:text-[#0a2a6e]">
+                      {BUSINESS.phone}
+                    </span>
+                  </span>
+                </a>
+                <a
+                  href={`mailto:${BUSINESS.email}`}
+                  className="group flex items-center gap-4 rounded-2xl border bg-white p-5 shadow-sm transition-all hover:shadow-md"
+                >
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#e23635] text-white">
+                    <Mail className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      Email Us
+                    </span>
+                    <span className="block truncate text-base font-bold text-foreground group-hover:text-[#0a2a6e]">
+                      {BUSINESS.email}
+                    </span>
+                  </span>
+                </a>
+              </div>
+
+              <div className="mt-8 overflow-hidden rounded-2xl border shadow-sm">
+                <Image
+                  src="/service-area-map.webp"
+                  alt="Map showing Aquino Home Solutions service area — Lowell MA and surrounding communities within ~30 miles"
+                  width={928}
+                  height={928}
+                  className="h-auto w-full"
+                />
+              </div>
+            </div>
+
+            {/* Right: estimate form */}
+            <div className="lg:sticky lg:top-24">
+              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                Get Your Free Estimate
+              </h3>
+              <p className="mt-2 mb-6 text-muted-foreground">
+                Tell us about your project — we respond within 1 business hour.
+                No obligation, always free.
+              </p>
+              <CTAForm />
+            </div>
           </div>
         </div>
       </section>

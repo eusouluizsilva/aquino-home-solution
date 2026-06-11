@@ -23,7 +23,7 @@ export default function ServicesIndexPage() {
             "linear-gradient(135deg, oklch(0.22 0.13 250) 0%, oklch(0.40 0.18 245) 100%)",
         }}
       >
-        <div className="mx-auto max-w-7xl px-4 text-center text-white sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[90rem] px-4 text-center text-white sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-white/70">
             What we do
           </p>
@@ -52,7 +52,7 @@ export default function ServicesIndexPage() {
 
       {/* Services grid */}
       <section className="py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES_CONTENT.map((service) => (
               <Link
