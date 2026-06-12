@@ -55,6 +55,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  verification: {
+    google: "MhB_qUzyqFFWwuwzcP08WKM_gMiUB4faH0wE1Emedy4",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Aquino Home Solutions | General Contractor — Lowell, MA",
