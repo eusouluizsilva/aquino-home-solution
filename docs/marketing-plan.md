@@ -163,6 +163,6 @@ Conta Google Ads
 | Conta | ID | Criado em |
 |---|---|---|
 | GA4 (propriedade Aquino Website) | `G-FLLFY02F4Y` — ✅ tag no ar, 3 key events (click_call, submit_quote_form, click_email), retenção 14 meses, vinculado ao Search Console | 2026-06-12 |
-| GTM (container web) | _pendente_ | — |
+| GTM (container web) | `GTM-KJLK63NS` — criado, dormente (ativar via NEXT_PUBLIC_GTM_ID na fase das tags do Ads; cuidado com dupla contagem com o gtag) | 2026-06-12 |
 | Google Ads | _pendente_ | — |
 | Search Console | ✅ verificado (prefixo https://www.aquinosolutions.com) | 2026-06-12 |
