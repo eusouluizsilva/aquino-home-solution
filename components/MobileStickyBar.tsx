@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { pushGTMEvent } from "@/lib/gtm";
 import { BUSINESS } from "@/lib/constants";
 
@@ -43,17 +43,15 @@ export default function MobileStickyBar() {
           <span className="truncate text-sm font-semibold">Call Now</span>
         </a>
         <a
-          href={`https://wa.me/${BUSINESS.whatsapp}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pointer-events-auto flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-green-500 px-4 py-3 text-white shadow-[0_10px_24px_-14px_rgba(21,128,61,0.95)] transition-all hover:brightness-105 active:scale-[0.98]"
-          onClick={() => pushGTMEvent("click_whatsapp")}
-          aria-label="Message Aquino Home Solutions on WhatsApp"
+          href={`mailto:${BUSINESS.email}?subject=Free%20Estimate%20Request`}
+          className="pointer-events-auto flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#0a2a6e] to-[#1240a0] px-4 py-3 text-white shadow-[0_10px_24px_-14px_rgba(10,42,110,0.95)] transition-all hover:brightness-105 active:scale-[0.98]"
+          onClick={() => pushGTMEvent("click_email")}
+          aria-label="Email Aquino Home Solutions"
         >
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
-            <MessageCircle className="h-4 w-4" />
+            <Mail className="h-4 w-4" />
           </span>
-          <span className="truncate text-sm font-semibold">WhatsApp</span>
+          <span className="truncate text-sm font-semibold">Email Us</span>
         </a>
       </div>
     </div>

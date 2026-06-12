@@ -1,6 +1,7 @@
 type GTMEvent =
   | "click_call"
   | "click_whatsapp"
+  | "click_email"
   | "submit_quote_form"
   | "upload_photo";
 
