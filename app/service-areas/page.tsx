@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { BUSINESS, SERVICE_AREAS } from "@/lib/constants";
+import { BUSINESS } from "@/lib/constants";
+import { CITIES, TIER_LABELS, type CityTier } from "@/lib/cities";
 
 export const metadata: Metadata = {
-  title: "Service Areas | Lowell, Chelmsford, Billerica & More",
+  title: "Service Areas | General Contractor Serving 30+ Towns Around Lowell, MA",
   description:
-    "Aquino Home Solutions, your local general contractor, serves Lowell, Chelmsford, Billerica, Tewksbury, Dracut, and 9 more communities in Greater Lowell, MA.",
+    "Aquino Home Solutions serves Lowell, Chelmsford, Andover, Lexington, Concord, Westford and 25+ more communities across Greater Lowell and the Merrimack Valley. Find your town.",
 };
+
+const TIER_ORDER: CityTier[] = ["home", "A", "B", "C"];
 
 export default function ServiceAreasPage() {
   return (
@@ -19,75 +22,86 @@ export default function ServiceAreasPage() {
         <div className="mb-12">
           <div className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-primary">
             <MapPin className="h-4 w-4" />
-            Greater Lowell, MA
+            Greater Lowell & Merrimack Valley, MA
           </div>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Areas We Serve
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
+          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Based in Lowell, MA, we provide general contracting services —
-            remodels, decks, painting, flooring, tile, plaster, and stairs —
-            to homeowners across Greater Lowell and the Merrimack Valley. If
-            your town isn&apos;t listed, give us a call — we may still be able to help.
+            remodels, decks, painting, flooring, tile, plaster, plumbing, and
+            HVAC — to homeowners in 30+ communities. Select your town for local
+            details and a free estimate.
           </p>
         </div>
 
-        {/* Areas grid */}
-        <div className="rounded-2xl border bg-card p-8">
-          <h2 className="mb-6 text-xl font-semibold">Communities We Service</h2>
-          <div className="flex flex-wrap gap-3">
-            {SERVICE_AREAS.map((area) => (
-              <Badge
-                key={area}
-                variant="secondary"
-                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium"
-              >
-                <MapPin className="h-3.5 w-3.5 text-primary" />
-                {area}, MA
-              </Badge>
-            ))}
-          </div>
-        </div>
-
-        {/* Coverage info */}
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-xl border bg-card p-6">
-            <h3 className="text-lg font-semibold mb-3">Response Times</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                <span>
-                  <strong className="text-foreground">Lowell & Dracut</strong> — typically within 1–2 hours
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                <span>
-                  <strong className="text-foreground">Chelmsford, Billerica, Tewksbury</strong> — same day
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                <span>
-                  <strong className="text-foreground">Outer areas</strong> — next-day or scheduled
-                </span>
-              </li>
-            </ul>
+        {/* Map + cities grid */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-8">
+            {TIER_ORDER.map((tier) => {
+              const cities = CITIES.filter((c) => c.tier === tier);
+              if (cities.length === 0) return null;
+              return (
+                <div key={tier} className="mb-10">
+                  <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#e23635]">
+                    {TIER_LABELS[tier]}
+                  </h2>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                    {cities.map((city) => (
+                      <Link
+                        key={city.slug}
+                        href={`/service-areas/${city.slug}`}
+                        className="group flex items-center justify-between rounded-xl border bg-card px-4 py-3.5 shadow-sm transition-all hover:border-[#0a2a6e] hover:shadow-md"
+                      >
+                        <span className="flex items-center gap-2.5">
+                          <MapPin className="h-4 w-4 shrink-0 text-[#e23635]" />
+                          <span>
+                            <span className="block text-sm font-bold text-foreground">
+                              {city.name}, MA
+                            </span>
+                            <span className="block text-xs text-muted-foreground">
+                              {city.zip}
+                            </span>
+                          </span>
+                        </span>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-[#0a2a6e]" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          <div className="rounded-xl border bg-card p-6">
-            <h3 className="text-lg font-semibold mb-3">Not Sure We Cover Your Area?</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Call or text us — we&apos;ll tell you right away if we can make it to you.
-              We&apos;re always expanding our coverage.
-            </p>
-            <a
-              href={`tel:${BUSINESS.phoneRaw}`}
-              className="flex items-center gap-2 font-semibold text-primary hover:underline"
-            >
-              <Phone className="h-4 w-4" />
-              {BUSINESS.phone}
-            </a>
+          {/* Sticky map + CTA */}
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-24 space-y-6">
+              <div className="overflow-hidden rounded-2xl border shadow-sm">
+                <Image
+                  src="/service-area-map.webp"
+                  alt="Map of Aquino Home Solutions service area — Lowell MA and surrounding communities"
+                  width={928}
+                  height={928}
+                  className="h-auto w-full"
+                />
+              </div>
+              <div className="rounded-2xl border bg-card p-6">
+                <h3 className="mb-2 text-lg font-semibold">
+                  Don&apos;t See Your Town?
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  Call or text us — we&apos;ll tell you right away if we can
+                  make it to you.
+                </p>
+                <a
+                  href={`tel:${BUSINESS.phoneRaw}`}
+                  className="flex items-center gap-2 font-semibold text-primary hover:underline"
+                >
+                  <Phone className="h-4 w-4" />
+                  {BUSINESS.phone}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -99,8 +113,8 @@ export default function ServiceAreasPage() {
               "linear-gradient(135deg, oklch(0.22 0.13 250) 0%, oklch(0.40 0.18 245) 100%)",
           }}
         >
-          <h2 className="text-2xl font-bold mb-3">Ready to Book?</h2>
-          <p className="text-slate-200 mb-6">
+          <h2 className="mb-3 text-2xl font-bold">Ready to Book?</h2>
+          <p className="mb-6 text-slate-200">
             Get a free estimate — no obligation, no pressure.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

@@ -2,12 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { BUSINESS, SERVICES } from "@/lib/constants";
+import { CITIES } from "@/lib/cities";
 
 export default function Footer() {
   return (
     <footer className="bg-[linear-gradient(135deg,rgba(9,16,40,0.98)_0%,rgba(18,42,94,0.96)_45%,rgba(104,12,24,0.95)_100%)] text-slate-300">
       <div className="mx-auto max-w-[90rem] px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
@@ -47,6 +48,35 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Service Areas column */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+              Service Areas
+            </h3>
+            <ul className="space-y-2">
+              {CITIES.filter((c) => c.tier === "home" || c.tier === "A")
+                .slice(0, 9)
+                .map((city) => (
+                  <li key={city.slug}>
+                    <Link
+                      href={`/service-areas/${city.slug}`}
+                      className="text-sm hover:text-white transition-colors"
+                    >
+                      {city.name}, MA
+                    </Link>
+                  </li>
+                ))}
+              <li>
+                <Link
+                  href="/service-areas"
+                  className="text-sm font-semibold text-white/90 hover:text-white transition-colors"
+                >
+                  All Service Areas →
+                </Link>
+              </li>
             </ul>
           </div>
 

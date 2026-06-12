@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SERVICES_CONTENT } from "@/lib/services-content";
+import { CITIES } from "@/lib/cities";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://aquinohomesolutions.com";
@@ -21,5 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const cityRoutes: MetadataRoute.Sitemap = CITIES.map((c) => ({
+    url: `${SITE_URL}/service-areas/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: c.tier === "A" || c.tier === "home" ? 0.8 : 0.7,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...cityRoutes];
 }

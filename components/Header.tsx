@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { pushGTMEvent } from "@/lib/gtm";
 import { BUSINESS } from "@/lib/constants";
 import { SERVICES_CONTENT } from "@/lib/services-content";
+import { CITIES } from "@/lib/cities";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -18,6 +19,7 @@ const NAV_LINKS = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileAreasOpen, setMobileAreasOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/60 bg-white/80 backdrop-blur-md">
@@ -78,12 +80,42 @@ export default function Header() {
             </div>
           </div>
 
-          <Link
-            href="/service-areas"
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
-          >
-            Service Areas
-          </Link>
+          {/* Service Areas dropdown */}
+          <div className="group/areas relative">
+            <button
+              type="button"
+              className="flex items-center gap-1 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+              aria-haspopup="true"
+            >
+              Service Areas
+              <ChevronDown className="h-4 w-4 transition-transform group-hover/areas:rotate-180" />
+            </button>
+            <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all group-hover/areas:visible group-hover/areas:opacity-100 group-focus-within/areas:visible group-focus-within/areas:opacity-100">
+              <div className="w-[34rem] overflow-hidden rounded-xl border border-gray-200/80 bg-white shadow-xl">
+                <ul className="grid max-h-[60vh] grid-cols-3 gap-x-2 overflow-y-auto p-3">
+                  {CITIES.map((c) => (
+                    <li key={c.slug}>
+                      <Link
+                        href={`/service-areas/${c.slug}`}
+                        className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-[#0a2a6e]/5 hover:text-[#0a2a6e]"
+                      >
+                        {c.name}, MA
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <div className="border-t border-gray-100 bg-gray-50 px-4 py-3">
+                  <Link
+                    href="/service-areas"
+                    className="text-xs font-bold uppercase tracking-wide text-[#e23635] hover:underline"
+                  >
+                    View All Service Areas →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <Link
             href="/contact"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
@@ -164,16 +196,55 @@ export default function Header() {
               </div>
             )}
 
-            {NAV_LINKS.slice(1).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* Service Areas accordion */}
+            <button
+              type="button"
+              onClick={() => setMobileAreasOpen((o) => !o)}
+              className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              aria-expanded={mobileAreasOpen}
+            >
+              <span>Service Areas</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  mobileAreasOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {mobileAreasOpen && (
+              <div className="ml-3 flex max-h-[40vh] flex-col gap-0.5 overflow-y-auto border-l border-gray-200 pl-3">
+                <Link
+                  href="/service-areas"
+                  className="rounded-md px-3 py-2 text-sm font-semibold text-[#e23635] hover:bg-gray-100"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    setMobileAreasOpen(false);
+                  }}
+                >
+                  All Service Areas
+                </Link>
+                {CITIES.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={`/service-areas/${c.slug}`}
+                    className="rounded-md px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-[#0a2a6e]"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileAreasOpen(false);
+                    }}
+                  >
+                    {c.name}, MA
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <Link
+              href="/contact"
+              className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              onClick={() => setMobileOpen(false)}
+            >
+              Contact
+            </Link>
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
               className="mt-2 flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground"
