@@ -6,7 +6,7 @@ import { BUSINESS, SERVICES } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="bg-[linear-gradient(135deg,rgba(9,16,40,0.98)_0%,rgba(18,42,94,0.96)_45%,rgba(104,12,24,0.95)_100%)] text-slate-300">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90rem] px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -40,7 +40,7 @@ export default function Footer() {
               {SERVICES.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href="/services"
+                    href={`/services/${service.id}`}
                     className="text-sm hover:text-white transition-colors"
                   >
                     {service.title}
@@ -90,8 +90,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
+        <div className="mt-10 space-y-1 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
+          <div>
+            © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
+          </div>
+          <div>
+            Website by{" "}
+            <a
+              href="https://silvagrowth.com/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors"
+            >
+              SilvaGrowth
+            </a>
+          </div>
         </div>
       </div>
     </footer>

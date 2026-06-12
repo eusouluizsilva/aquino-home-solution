@@ -14,40 +14,53 @@ const inter = Inter({
   display: "swap",
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://aquinohomesolutions.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s | Aquino Home Solutions",
-    default: "Aquino Home Solutions | HVAC & Water Heater Experts — Lowell, MA",
+    default: "Aquino Home Solutions | General Contractor — Lowell, MA",
   },
   description:
-    "Licensed & insured HVAC and water heater specialists serving Lowell, MA and surrounding communities. Same-day service available. Call (603) 408-4073.",
+    "Licensed & insured general contractor serving Lowell, MA. Kitchen & bath remodels, decks, stairs, painting, vinyl flooring, tile, plaster, plumbing, and HVAC. Call (603) 408-4073.",
   keywords: [
+    "general contractor Lowell MA",
+    "kitchen remodel Lowell",
+    "bathroom remodel Lowell MA",
+    "deck builder Lowell",
+    "painting contractor Lowell MA",
+    "vinyl flooring installation",
+    "tile installer Lowell",
+    "plaster repair MA",
+    "stair builder Lowell",
+    "plumber Lowell MA",
     "HVAC Lowell MA",
-    "water heater installation Lowell",
-    "AC repair Lowell MA",
-    "furnace repair Lowell",
-    "HVAC contractor Lowell",
-    "water heater repair MA",
-    "emergency HVAC service",
     "Aquino Home Solutions",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Aquino Home Solutions",
-    title: "Aquino Home Solutions | HVAC & Water Heater Experts — Lowell, MA",
+    title: "Aquino Home Solutions | General Contractor — Lowell, MA",
     description:
-      "Licensed & insured HVAC and water heater specialists serving Lowell, MA. Same-day service. Call (603) 408-4073.",
+      "Licensed & insured general contractor serving Lowell, MA. Remodels, decks, painting, flooring, tile, plaster, stairs, plumbing, HVAC. Call (603) 408-4073.",
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
+  "@type": "GeneralContractor",
+  "@id": `${SITE_URL}#business`,
   name: BUSINESS.name,
   description: BUSINESS.description,
+  url: SITE_URL,
+  image: `${SITE_URL}/aquino-logo.webp`,
+  logo: `${SITE_URL}/aquino-logo.webp`,
   telephone: BUSINESS.phone,
   email: BUSINESS.email,
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     addressLocality: BUSINESS.city,
@@ -77,6 +90,24 @@ const localBusinessSchema = {
       longitude: -71.3162,
     },
     geoRadius: "50000",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "General Contracting Services",
+    itemListElement: [
+      "Kitchen & Bathroom Remodel",
+      "Stairs",
+      "Decks",
+      "Painting",
+      "Vinyl Flooring",
+      "Tile Installation",
+      "Plaster",
+      "Plumbing",
+      "HVAC",
+    ].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+    })),
   },
 };
 

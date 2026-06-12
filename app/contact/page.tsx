@@ -5,9 +5,9 @@ import CTAForm from "@/components/CTAForm";
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Free HVAC Estimate — Lowell, MA",
+  title: "Contact Us | Free Estimate — Lowell, MA",
   description:
-    "Contact Aquino Home Solutions for a free HVAC or water heater estimate. Same-day service available. Call (603) 408-4073 or fill out our quick form.",
+    "Contact Aquino Home Solutions for a free general contracting estimate — remodels, decks, painting, flooring, tile, plaster, and stairs. Call (603) 408-4073 or fill out our quick form.",
 };
 
 const contactCards = [
@@ -75,7 +75,7 @@ const contactCards = [
 export default function ContactPage() {
   return (
     <div className="py-12 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h1 className="text-4xl font-bold tracking-tight">
             Contact Aquino Home Solutions

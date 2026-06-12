@@ -1,25 +1,39 @@
 import Link from "next/link";
-import { Wind, Flame, Gauge, Droplets, AlertTriangle } from "lucide-react";
+import {
+  ChefHat,
+  Footprints,
+  Hammer,
+  Paintbrush,
+  Layers,
+  LayoutGrid,
+  Building2,
+  Droplets,
+  Wind,
+} from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 
 const ICON_MAP: Record<string, React.ReactNode> = {
-  Wind: <Wind className="h-7 w-7 text-[#0a2a6e]" />,
-  Flame: <Flame className="h-7 w-7 text-[#0a2a6e]" />,
-  Gauge: <Gauge className="h-7 w-7 text-[#0a2a6e]" />,
+  ChefHat: <ChefHat className="h-7 w-7 text-[#0a2a6e]" />,
+  Footprints: <Footprints className="h-7 w-7 text-[#0a2a6e]" />,
+  Hammer: <Hammer className="h-7 w-7 text-[#0a2a6e]" />,
+  Paintbrush: <Paintbrush className="h-7 w-7 text-[#0a2a6e]" />,
+  Layers: <Layers className="h-7 w-7 text-[#0a2a6e]" />,
+  LayoutGrid: <LayoutGrid className="h-7 w-7 text-[#0a2a6e]" />,
+  Building2: <Building2 className="h-7 w-7 text-[#0a2a6e]" />,
   Droplets: <Droplets className="h-7 w-7 text-[#0a2a6e]" />,
-  AlertTriangle: <AlertTriangle className="h-7 w-7 text-[#0a2a6e]" />,
+  Wind: <Wind className="h-7 w-7 text-[#0a2a6e]" />,
 };
 
 export default function OurServices() {
   return (
-    <section className="relative overflow-hidden bg-gray-100 py-16 md:py-20">
+    <section id="services" className="relative overflow-hidden bg-gray-100 py-16 md:py-20">
       {/* Diagonal blue background */}
       <div
         className="pointer-events-none absolute inset-0 bg-[#0a2a6e]"
         style={{ clipPath: "polygon(0 0, 52% 0, 26% 100%, 0 100%)" }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="mb-12">
           <p className="text-xs font-bold uppercase tracking-widest text-white/60">What we do</p>
@@ -29,7 +43,7 @@ export default function OurServices() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:gap-10">
           {SERVICES.map((service) => (
             <div
               key={service.id}

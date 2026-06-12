@@ -8,7 +8,7 @@ const reasons = [
     icon: <Clock className="h-8 w-8" />,
     title: "Fast Response",
     description:
-      "We answer calls fast and offer same-day appointments. No waiting weeks for service.",
+      "We answer calls fast and reply to every estimate request within 1 business hour.",
   },
   {
     icon: <Shield className="h-8 w-8" />,
@@ -61,17 +61,18 @@ export default function WhyChooseUs() {
 
   return (
     <section className="py-10 md:py-14" style={{ background: "linear-gradient(135deg, oklch(0.42 0.03 250) 0%, oklch(0.50 0.025 240) 100%)" }}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
           <p className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-100">
             Why Choose Us
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Trusted Local Team for Heating, Cooling, and Plumbing
+            Trusted Local General Contractor for Your Home
           </h2>
           <p className="mt-3 text-blue-100/80">
-            We focus on fast response times, code-compliant work, and honest
-            communication from your first call to final cleanup.
+            From kitchen and bath remodels to decks, painting, flooring, and
+            plaster — we deliver code-compliant work, clean finishes, and honest
+            communication from first call to final walkthrough.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

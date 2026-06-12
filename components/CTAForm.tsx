@@ -1,13 +1,21 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle, Loader2, AlertCircle, Send } from "lucide-react";
+import {
+  CheckCircle,
+  Loader2,
+  AlertCircle,
+  Send,
+  Upload,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -16,22 +24,29 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { leadFormSchema, LeadFormValues } from "@/lib/validation";
-import { SERVICES } from "@/lib/constants";
+import { SERVICES, FILE_CONSTRAINTS } from "@/lib/constants";
 import { pushGTMEvent } from "@/lib/gtm";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export default function CTAForm() {
+interface CTAFormProps {
+  defaultService?: string;
+}
+
+export default function CTAForm({ defaultService }: CTAFormProps = {}) {
   return (
     <Suspense fallback={<div className="rounded-xl border bg-card p-6 shadow-sm h-80 animate-pulse" />}>
-      <CTAFormInner />
+      <CTAFormInner defaultService={defaultService} />
     </Suspense>
   );
 }
 
-function CTAFormInner() {
+function CTAFormInner({ defaultService }: CTAFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [serverError, setServerError] = useState<string>("");
+  const [photos, setPhotos] = useState<File[]>([]);
+  const [photoError, setPhotoError] = useState<string>("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
 
   const {
@@ -46,11 +61,40 @@ function CTAFormInner() {
   });
 
   useEffect(() => {
-    const serviceParam = searchParams.get("service");
+    const serviceParam = defaultService ?? searchParams.get("service");
     if (serviceParam && SERVICES.some((s) => s.id === serviceParam)) {
       setValue("service", serviceParam, { shouldValidate: true });
     }
-  }, [searchParams, setValue]);
+  }, [defaultService, searchParams, setValue]);
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhotoError("");
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+
+    const combined = [...photos, ...files];
+    if (combined.length > FILE_CONSTRAINTS.maxFiles) {
+      setPhotoError(`Maximum ${FILE_CONSTRAINTS.maxFiles} photos.`);
+      return;
+    }
+    for (const file of files) {
+      if (!FILE_CONSTRAINTS.acceptedTypes.includes(file.type)) {
+        setPhotoError(`"${file.name}" is not a supported image type.`);
+        return;
+      }
+      if (file.size > FILE_CONSTRAINTS.maxSizeBytes) {
+        setPhotoError(`"${file.name}" is over ${FILE_CONSTRAINTS.maxSizeMB}MB.`);
+        return;
+      }
+    }
+    setPhotos(combined);
+    pushGTMEvent("upload_photo", { count: files.length });
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const removePhoto = (idx: number) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== idx));
+  };
 
   const onSubmit = async (data: LeadFormValues) => {
     setStatus("submitting");
@@ -61,6 +105,8 @@ function CTAFormInner() {
     formData.append("phone", data.phone);
     formData.append("email", data.email);
     formData.append("service", data.service);
+    if (data.message) formData.append("message", data.message);
+    photos.forEach((p) => formData.append("photos", p));
 
     try {
       const res = await fetch("/api/lead", {
@@ -72,6 +118,7 @@ function CTAFormInner() {
         setStatus("success");
         pushGTMEvent("submit_quote_form");
         reset();
+        setPhotos([]);
       } else {
         const body = await res.json().catch(() => ({}));
         setServerError(body.error || "Something went wrong. Please try again.");
@@ -171,6 +218,77 @@ function CTAFormInner() {
         )}
       </div>
 
+      {/* Message */}
+      <div className="space-y-1">
+        <Label htmlFor="message">
+          Tell us about your project <span className="text-muted-foreground font-normal">(optional)</span>
+        </Label>
+        <Textarea
+          id="message"
+          placeholder="Briefly describe what you need — size of room, materials, timeline, etc."
+          rows={3}
+          {...register("message")}
+          aria-invalid={!!errors.message}
+        />
+        {errors.message && (
+          <p className="text-xs text-destructive">{errors.message.message}</p>
+        )}
+      </div>
+
+      {/* Photos */}
+      <div className="space-y-1">
+        <Label htmlFor="photos">
+          Photos <span className="text-muted-foreground font-normal">(optional, up to {FILE_CONSTRAINTS.maxFiles})</span>
+        </Label>
+        <input
+          ref={fileInputRef}
+          id="photos"
+          type="file"
+          accept={FILE_CONSTRAINTS.acceptedExtensions}
+          multiple
+          onChange={handlePhotoChange}
+          className="sr-only"
+        />
+        <button
+          type="button"
+          onClick={() => fileInputRef.current?.click()}
+          className="flex w-full items-center justify-center gap-2 rounded-md border border-dashed border-input bg-background px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-muted/50"
+        >
+          <Upload className="h-4 w-4" />
+          {photos.length === 0
+            ? "Add photos of your space"
+            : `Add more (${photos.length}/${FILE_CONSTRAINTS.maxFiles})`}
+        </button>
+        {photoError && (
+          <p className="text-xs text-destructive">{photoError}</p>
+        )}
+        {photos.length > 0 && (
+          <ul className="mt-2 space-y-1">
+            {photos.map((file, idx) => (
+              <li
+                key={`${file.name}-${idx}`}
+                className="flex items-center justify-between rounded-md border bg-muted/30 px-3 py-1.5 text-xs"
+              >
+                <span className="truncate pr-2">
+                  {file.name}{" "}
+                  <span className="text-muted-foreground">
+                    ({(file.size / 1024 / 1024).toFixed(1)}MB)
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => removePhoto(idx)}
+                  className="text-muted-foreground hover:text-destructive"
+                  aria-label={`Remove ${file.name}`}
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       {/* Server error */}
       {status === "error" && serverError && (
         <div className="flex items-center gap-2 rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
@@ -193,7 +311,7 @@ function CTAFormInner() {
         ) : (
           <>
             <Send className="h-4 w-4" />
-            Get My Free Estimate
+            Get Free Estimate
           </>
         )}
       </button>
