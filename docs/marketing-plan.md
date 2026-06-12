@@ -155,3 +155,14 @@ Conta Google Ads
 - [ ] Campanhas C1/C2/C3 montadas com assets completos
 - [ ] Telefone (603) 408-4073 com atendimento garantido no horário dos anúncios
 - [ ] Primeira semana: revisar termos de pesquisa em D+3 e D+7
+
+---
+
+## IDs das contas (preenchido conforme criação)
+
+| Conta | ID | Criado em |
+|---|---|---|
+| GA4 (propriedade Aquino Website) | `G-FLLFY02F4Y` | 2026-06-12 |
+| GTM (container web) | _pendente_ | — |
+| Google Ads | _pendente_ | — |
+| Search Console | ✅ verificado (prefixo https://www.aquinosolutions.com) | 2026-06-12 |
