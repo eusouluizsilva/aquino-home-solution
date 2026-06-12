@@ -4,6 +4,10 @@ export const BUSINESS = {
   phoneRaw: "16034084073",
   whatsapp: "16034084073",
   email: "aquinohomesolution@gmail.com",
+  instagram: "https://www.instagram.com/aquinohomesolutions/",
+  thumbtack:
+    "https://www.thumbtack.com/ma/lowell/repiping-specialists/aquino-home-solutions/service/544979298342502401",
+  googleBusiness: "https://share.google/BImKoHxDgZlbsKPF4",
   city: "Lowell",
   state: "MA",
   zip: "01850",

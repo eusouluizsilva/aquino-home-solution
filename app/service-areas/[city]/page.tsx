@@ -9,7 +9,7 @@ import { SERVICES_CONTENT } from "@/lib/services-content";
 import { CITIES, CITY_BANNERS, getCity } from "@/lib/cities";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://aquinohomesolutions.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.aquinosolutions.com";
 
 export function generateStaticParams() {
   return CITIES.map((c) => ({ city: c.slug }));

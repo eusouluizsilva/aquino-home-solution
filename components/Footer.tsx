@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Instagram, Star, Hammer } from "lucide-react";
 import { BUSINESS, SERVICES } from "@/lib/constants";
 import { CITIES } from "@/lib/cities";
 
@@ -29,6 +29,35 @@ export default function Footer() {
               <span className="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">
                 Insured
               </span>
+            </div>
+            <div className="mt-5 flex gap-3">
+              <a
+                href={BUSINESS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Aquino Home Solutions on Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-[#e23635]"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href={BUSINESS.googleBusiness}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Aquino Home Solutions on Google"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-[#e23635]"
+              >
+                <Star className="h-5 w-5" />
+              </a>
+              <a
+                href={BUSINESS.thumbtack}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Aquino Home Solutions on Thumbtack"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-[#e23635]"
+              >
+                <Hammer className="h-5 w-5" />
+              </a>
             </div>
           </div>
 

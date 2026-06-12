@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://aquinohomesolutions.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.aquinosolutions.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -46,6 +46,21 @@ export const metadata: Metadata = {
     title: "Aquino Home Solutions | General Contractor — Lowell, MA",
     description:
       "Licensed & insured general contractor serving Lowell, MA. Remodels, decks, painting, flooring, tile, plaster, stairs, plumbing, HVAC. Call (603) 408-4073.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aquino Home Solutions — General Contractor in Lowell, MA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aquino Home Solutions | General Contractor — Lowell, MA",
+    description:
+      "Licensed & insured general contractor serving Lowell, MA. Free estimates — call (603) 408-4073.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -61,6 +76,7 @@ const localBusinessSchema = {
   telephone: BUSINESS.phone,
   email: BUSINESS.email,
   priceRange: "$$",
+  sameAs: [BUSINESS.instagram, BUSINESS.thumbtack, BUSINESS.googleBusiness],
   address: {
     "@type": "PostalAddress",
     addressLocality: BUSINESS.city,

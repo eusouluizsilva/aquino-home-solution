@@ -3,7 +3,7 @@ import { SERVICES_CONTENT } from "@/lib/services-content";
 import { CITIES } from "@/lib/cities";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://aquinohomesolutions.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.aquinosolutions.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
