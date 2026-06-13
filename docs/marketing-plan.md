@@ -166,3 +166,17 @@ Conta Google Ads
 | GTM (container web) | `GTM-KJLK63NS` — criado, dormente (ativar via NEXT_PUBLIC_GTM_ID na fase das tags do Ads; cuidado com dupla contagem com o gtag) | 2026-06-12 |
 | Google Ads | `114-065-0649` — conta criada, cartao cadastrado | 2026-06-12 |
 | Search Console | ✅ verificado (prefixo https://www.aquinosolutions.com) | 2026-06-12 |
+
+---
+
+## Estado final das campanhas (13/jun/2026) — ATIVAS
+
+Conta 114-065-0649. Orçamento $49/dia ($343/sem). Conversões via GA4 (G-FLLFY02F4Y) + Chamada via Anúncio.
+
+- **C1_Search_KitchenBath** — $21/dia · Max cliques teto $12 · 20 cidades Tier A+B · grupos kitchen_remodel + bathroom_remodel
+- **C2_Search_CoreServices** — $17/dia · Max cliques teto $8 · 31 cidades · grupos decks, plumbing, hvac (painting PAUSADO — alta concorrência/baixa margem)
+- **C3_CallOnly_Contractor** — $11/dia · Max conversões · 31 cidades · RSA + call asset (603) 408-4073
+
+Todas: só Rede de Pesquisa · Seg–Sex 07–19h, Sáb 08–17h, Dom off · 4 sitelinks + 4 callouts + 1 snippet "Service catalog" · lista "Negativas Gerais" (25 termos, inclui paint/painting/painters/house painter).
+
+Aprendizado: ~7–10 dias sem mexer. Após ~30 conversões, migrar lances para Maximizar Conversões.
