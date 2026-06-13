@@ -21,6 +21,12 @@ export const CITY_BANNERS: Record<City["banner"], string> = {
   aerial: "/cities/banner-aerial.mp4",
 };
 
+export const CITY_POSTERS: Record<City["banner"], string> = {
+  estate: "/cities/poster-estate.jpg",
+  suburban: "/cities/poster-suburban.jpg",
+  aerial: "/cities/poster-aerial.jpg",
+};
+
 export const CITIES: City[] = [
   {
     name: "Lowell",

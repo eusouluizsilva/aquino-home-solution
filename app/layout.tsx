@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileStickyBar from "@/components/MobileStickyBar";
+import ClickTracker from "@/components/ClickTracker";
 import { BUSINESS } from "@/lib/constants";
 
 const inter = Inter({
@@ -181,6 +182,7 @@ export default function RootLayout({
             />
           </noscript>
         )}
+        <ClickTracker />
         <Header />
         <main>{children}</main>
         <Footer />

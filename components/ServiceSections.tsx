@@ -45,6 +45,7 @@ function MediaBento({
             muted
             loop
             playsInline
+            preload="none"
             poster={service.heroImage}
             aria-hidden="true"
           >

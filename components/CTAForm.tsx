@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useState, useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -11,6 +11,7 @@ import {
   Send,
   Upload,
   X,
+  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,6 +49,7 @@ function CTAFormInner({ defaultService }: CTAFormProps) {
   const [photoError, setPhotoError] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const {
     register,
@@ -115,10 +117,11 @@ function CTAFormInner({ defaultService }: CTAFormProps) {
       });
 
       if (res.ok) {
-        setStatus("success");
         pushGTMEvent("submit_quote_form");
         reset();
         setPhotos([]);
+        router.push("/thank-you");
+        return;
       } else {
         const body = await res.json().catch(() => ({}));
         setServerError(body.error || "Something went wrong. Please try again.");
@@ -151,6 +154,20 @@ function CTAFormInner({ defaultService }: CTAFormProps) {
       className="rounded-xl border bg-card p-6 shadow-sm space-y-4"
       noValidate
     >
+      {/* Trust bar */}
+      <div className="-mx-6 -mt-6 mb-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 rounded-t-xl border-b bg-[#0a2a6e]/[0.04] px-6 py-3 text-xs font-semibold text-[#0a2a6e]">
+        <span className="flex items-center gap-1">
+          <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+          5.0 on Google
+        </span>
+        <span className="hidden sm:inline text-muted-foreground/40">·</span>
+        <span>Licensed &amp; Insured</span>
+        <span className="hidden sm:inline text-muted-foreground/40">·</span>
+        <span>15+ Years</span>
+        <span className="hidden sm:inline text-muted-foreground/40">·</span>
+        <span>Free Estimates</span>
+      </div>
+
       {/* Name */}
       <div className="space-y-1">
         <Label htmlFor="name">Full Name *</Label>

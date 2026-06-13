@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import CTAForm from "@/components/CTAForm";
 import { BUSINESS } from "@/lib/constants";
 import { SERVICES_CONTENT } from "@/lib/services-content";
-import { CITIES, CITY_BANNERS, getCity } from "@/lib/cities";
+import { CITIES, CITY_BANNERS, CITY_POSTERS, getCity } from "@/lib/cities";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.aquinosolutions.com";
@@ -108,6 +108,8 @@ export default async function CityPage({
             muted
             loop
             playsInline
+            preload="none"
+            poster={CITY_POSTERS[city.banner]}
             aria-hidden="true"
           >
             <source src={CITY_BANNERS[city.banner]} type="video/mp4" />

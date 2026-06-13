@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { pushGTMEvent } from "@/lib/gtm";
 import { BUSINESS } from "@/lib/constants";
 import { SERVICES_CONTENT } from "@/lib/services-content";
 import { CITIES } from "@/lib/cities";
@@ -129,7 +128,6 @@ export default function Header() {
           <a
             href={`tel:${BUSINESS.phoneRaw}`}
             className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            onClick={() => pushGTMEvent("click_call")}
           >
             <Phone className="h-4 w-4" />
             {BUSINESS.phone}
@@ -248,7 +246,6 @@ export default function Header() {
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
               className="mt-2 flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground"
-              onClick={() => pushGTMEvent("click_call")}
             >
               <Phone className="h-4 w-4" />
               {BUSINESS.phone}
